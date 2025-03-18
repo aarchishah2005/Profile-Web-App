@@ -33,11 +33,11 @@ const About = () => {
           <div className="education-timeline">
             <h3 className="timeline-title">Education Journey</h3>
             <div className="timeline-item">
-              <div className="timeline-marker">📌</div>
+              {/* <div className="timeline-marker">📌</div> */}
               <div className="timeline-content">
                 <h4>Computer Engineering</h4>
-                <p className="timeline-institution">[Your College Name]</p>
-                <p className="timeline-years">(Year - Year)</p>
+                <p className="timeline-institution">Savitribai Phule Pune University</p>
+                <p className="timeline-years">(2023 - 2027)</p>
               </div>
             </div>
           </div>

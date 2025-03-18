@@ -4,6 +4,7 @@ import './Projects.css';
 const Projects = () => {
   const [activeProject, setActiveProject] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +26,10 @@ const Projects = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  const toggleProjects = () => {
+    setIsExpanded(!isExpanded);
+  };
 
   // Sample projects data
   const projects = [
@@ -75,73 +80,80 @@ const Projects = () => {
   return (
     <section id="projects" className="projects-section">
       <div className="projects-container">
-        <h2 className="section-title">
+        <h2 
+          className="section-title" 
+          onClick={toggleProjects}
+          style={{ cursor: 'pointer' }}
+        >
           My <span className="highlight">Projects</span>
+          <span className="toggle-icon">{isExpanded ? '▼' : '►'}</span>
         </h2>
         
-        <div className={`projects-showcase ${isVisible ? 'visible' : ''}`}>
-          <div className="projects-carousel">
-            {projects.map((project, index) => {
-              const isActive = index === activeProject;
-              const isPrev = index === (activeProject === 0 ? projects.length - 1 : activeProject - 1);
-              const isNext = index === (activeProject === projects.length - 1 ? 0 : activeProject + 1);
-              
-              return (
-                <div 
-                  key={project.id}
-                  className={`project-card ${isActive ? 'active' : ''} ${isPrev ? 'prev' : ''} ${isNext ? 'next' : ''}`}
-                  style={{ 
-                    '--project-color': project.color,
-                    display: isActive || isPrev || isNext ? 'flex' : 'none'
-                  }}
-                >
-                  <div className="project-image-container">
-                    <img src={project.image} alt={project.title} className="project-image" />
-                    <div className="project-overlay">
-                      <div className="project-buttons">
-                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-button github">
-                          <span className="button-icon">&#128187;</span>
-                          GitHub
-                        </a>
-                        <a href={project.demo} target="_blank" rel="noopener noreferrer" className="project-button demo">
-                          <span className="button-icon">&#127760;</span>
-                          Live Demo
-                        </a>
+        {isExpanded && (
+          <div className={`projects-showcase ${isVisible ? 'visible' : ''}`}>
+            <div className="projects-carousel">
+              {projects.map((project, index) => {
+                const isActive = index === activeProject;
+                const isPrev = index === (activeProject === 0 ? projects.length - 1 : activeProject - 1);
+                const isNext = index === (activeProject === projects.length - 1 ? 0 : activeProject + 1);
+                
+                return (
+                  <div 
+                    key={project.id}
+                    className={`project-card ${isActive ? 'active' : ''} ${isPrev ? 'prev' : ''} ${isNext ? 'next' : ''}`}
+                    style={{ 
+                      '--project-color': project.color,
+                      display: isActive || isPrev || isNext ? 'flex' : 'none'
+                    }}
+                  >
+                    <div className="project-image-container">
+                      <img src={project.image} alt={project.title} className="project-image" />
+                      <div className="project-overlay">
+                        <div className="project-buttons">
+                          <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-button github">
+                            <span className="button-icon">&#128187;</span>
+                            GitHub
+                          </a>
+                          <a href={project.demo} target="_blank" rel="noopener noreferrer" className="project-button demo">
+                            <span className="button-icon">&#127760;</span>
+                            Live Demo
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="project-content">
+                      <h3 className="project-title">{project.title}</h3>
+                      <p className="project-description">{project.description}</p>
+                      <div className="project-tech">
+                        {project.technologies.map((tech, idx) => (
+                          <span key={idx} className="tech-tag">{tech}</span>
+                        ))}
                       </div>
                     </div>
                   </div>
-                  <div className="project-content">
-                    <h3 className="project-title">{project.title}</h3>
-                    <p className="project-description">{project.description}</p>
-                    <div className="project-tech">
-                      {project.technologies.map((tech, idx) => (
-                        <span key={idx} className="tech-tag">{tech}</span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-          
-          <div className="carousel-controls">
-            <button className="carousel-button prev" onClick={handlePrevProject}>
-              &#10094;
-            </button>
-            <div className="carousel-dots">
-              {projects.map((_, index) => (
-                <button 
-                  key={index} 
-                  className={`carousel-dot ${index === activeProject ? 'active' : ''}`}
-                  onClick={() => handleDotClick(index)}
-                ></button>
-              ))}
+                );
+              })}
             </div>
-            <button className="carousel-button next" onClick={handleNextProject}>
-              &#10095;
-            </button>
+            
+            <div className="carousel-controls">
+              <button className="carousel-button prev" onClick={handlePrevProject}>
+                &#10094;
+              </button>
+              <div className="carousel-dots">
+                {projects.map((_, index) => (
+                  <button 
+                    key={index} 
+                    className={`carousel-dot ${index === activeProject ? 'active' : ''}`}
+                    onClick={() => handleDotClick(index)}
+                  ></button>
+                ))}
+              </div>
+              <button className="carousel-button next" onClick={handleNextProject}>
+                &#10095;
+              </button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );

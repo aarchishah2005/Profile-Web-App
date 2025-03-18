@@ -3,7 +3,7 @@ import React from 'react';
 import './Footer.css';
 
 // Import social media icons from react-icons
-import { FaFacebookF, FaInstagram, FaGoogle, FaLinkedinIn } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 
 const Footer = () => {  // <-- Define the function here
   return (
@@ -20,9 +20,6 @@ const Footer = () => {  // <-- Define the function here
               <a href="https://www.instagram.com/falgunivahora/" className="social-icon instagram" target="_blank" rel="noopener noreferrer">
                 <FaInstagram />
               </a> 
-              <a href="https://workspaceupdates.googleblog.com/2023/04/new-community-features-for-google-chat-and-an-update-currents%20.html" className="social-icon google" target="_blank" rel="noopener noreferrer">
-                <FaGoogle />
-              </a>
               <a href="https://www.linkedin.com/company/blissquants/" className="social-icon linkedin" target="_blank" rel="noopener noreferrer">
                 <FaLinkedinIn />
               </a>

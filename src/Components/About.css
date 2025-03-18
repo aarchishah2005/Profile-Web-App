@@ -1,5 +1,5 @@
 .about-section {
-    padding: 6rem 2rem;
+    padding: 1rem 1rem;
     background-color: #ffffff;
     position: relative;
     overflow: hidden;
@@ -11,7 +11,7 @@
     top: 0;
     right: 0;
     width: 250px;
-    height: 250px;
+    /* height: 250px; */
     background: radial-gradient(circle, rgba(13, 110, 253, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
     border-radius: 50%;
     opacity: 0.6;
@@ -85,7 +85,7 @@
   
   /* Education timeline */
   .education-timeline {
-    margin-bottom: 4rem;
+    margin-bottom: 0em;
   }
   
   .timeline-title, .hobbies-title {

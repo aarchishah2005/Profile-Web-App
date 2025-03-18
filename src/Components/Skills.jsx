@@ -3,6 +3,7 @@ import './Skills.css';
 
 const Skills = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +25,10 @@ const Skills = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  const toggleSkills = () => {
+    setIsExpanded(!isExpanded);
+  };
 
   const frontendSkills = [
     { name: 'React.js', level: 80 },
@@ -47,86 +52,93 @@ const Skills = () => {
   return (
     <section id="skills" className="skills-section">
       <div className="skills-container">
-        <h2 className="section-title">
+        <h2 
+          className="section-title" 
+          onClick={toggleSkills}
+          style={{ cursor: 'pointer' }}
+        >
           My <span className="highlight">Skills</span>
+          <span className="toggle-icon">{isExpanded ? '▼' : '►'}</span>
         </h2>
         
-        <div className={`skills-content ${isVisible ? 'visible' : ''}`}>
-          <div className="skills-category">
-            <h3 className="category-title">
-              <span className="category-icon">💻</span> Frontend
-            </h3>
-            <div className="skills-grid">
-              {frontendSkills.map((skill, index) => (
-                <div className="skill-item" key={index}>
-                  <div className="skill-info">
-                    <h4 className="skill-name">{skill.name}</h4>
-                    <span className="skill-percentage">{skill.level}%</span>
+        {isExpanded && (
+          <div className={`skills-content ${isVisible ? 'visible' : ''}`}>
+            <div className="skills-category">
+              <h3 className="category-title">
+                <span className="category-icon">💻</span> Frontend
+              </h3>
+              <div className="skills-grid">
+                {frontendSkills.map((skill, index) => (
+                  <div className="skill-item" key={index}>
+                    <div className="skill-info">
+                      <h4 className="skill-name">{skill.name}</h4>
+                      <span className="skill-percentage">{skill.level}%</span>
+                    </div>
+                    <div className="skill-bar">
+                      <div 
+                        className="skill-progress" 
+                        style={{ 
+                          width: `${isVisible ? skill.level : 0}%`,
+                          transitionDelay: `${index * 0.1}s`
+                        }}
+                      ></div>
+                    </div>
                   </div>
-                  <div className="skill-bar">
-                    <div 
-                      className="skill-progress" 
-                      style={{ 
-                        width: `${isVisible ? skill.level : 0}%`,
-                        transitionDelay: `${index * 0.1}s`
-                      }}
-                    ></div>
+                ))}
+              </div>
+            </div>
+            
+            <div className="skills-category">
+              <h3 className="category-title">
+                <span className="category-icon">⚙️</span> Backend
+              </h3>
+              <div className="skills-grid">
+                {backendSkills.map((skill, index) => (
+                  <div className="skill-item" key={index}>
+                    <div className="skill-info">
+                      <h4 className="skill-name">{skill.name}</h4>
+                      <span className="skill-percentage">{skill.level}%</span>
+                    </div>
+                    <div className="skill-bar">
+                      <div 
+                        className="skill-progress" 
+                        style={{ 
+                          width: `${isVisible ? skill.level : 0}%`,
+                          transitionDelay: `${(index + frontendSkills.length) * 0.1}s`
+                        }}
+                      ></div>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+            </div>
+            
+            <div className="skills-category">
+              <h3 className="category-title">
+                <span className="category-icon">🤝</span> Soft Skills
+              </h3>
+              <div className="skills-grid">
+                {softSkills.map((skill, index) => (
+                  <div className="skill-item" key={index}>
+                    <div className="skill-info">
+                      <h4 className="skill-name">{skill.name}</h4>
+                      <span className="skill-percentage">{skill.level}%</span>
+                    </div>
+                    <div className="skill-bar">
+                      <div 
+                        className="skill-progress soft-skill" 
+                        style={{ 
+                          width: `${isVisible ? skill.level : 0}%`,
+                          transitionDelay: `${(index + frontendSkills.length + backendSkills.length) * 0.1}s`
+                        }}
+                      ></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-          
-          <div className="skills-category">
-            <h3 className="category-title">
-              <span className="category-icon">⚙️</span> Backend
-            </h3>
-            <div className="skills-grid">
-              {backendSkills.map((skill, index) => (
-                <div className="skill-item" key={index}>
-                  <div className="skill-info">
-                    <h4 className="skill-name">{skill.name}</h4>
-                    <span className="skill-percentage">{skill.level}%</span>
-                  </div>
-                  <div className="skill-bar">
-                    <div 
-                      className="skill-progress" 
-                      style={{ 
-                        width: `${isVisible ? skill.level : 0}%`,
-                        transitionDelay: `${(index + frontendSkills.length) * 0.1}s`
-                      }}
-                    ></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          
-          <div className="skills-category">
-            <h3 className="category-title">
-              <span className="category-icon">🤝</span> Soft Skills
-            </h3>
-            <div className="skills-grid">
-              {softSkills.map((skill, index) => (
-                <div className="skill-item" key={index}>
-                  <div className="skill-info">
-                    <h4 className="skill-name">{skill.name}</h4>
-                    <span className="skill-percentage">{skill.level}%</span>
-                  </div>
-                  <div className="skill-bar">
-                    <div 
-                      className="skill-progress soft-skill" 
-                      style={{ 
-                        width: `${isVisible ? skill.level : 0}%`,
-                        transitionDelay: `${(index + frontendSkills.length + backendSkills.length) * 0.1}s`
-                      }}
-                    ></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        )}
       </div>
     </section>
   );
