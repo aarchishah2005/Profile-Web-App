@@ -1,0 +1,93 @@
+.header {
+    position: relative;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    background-color: #02CCFE;  /* Set a background color */
+    padding: 0px 0px;  /* Space above and below the text */
+    z-index: 1000;  /* Keeps the header above other content */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: 0    px;
+}
+
+.header .container {
+    width: 100%;
+    margin: 2px 2px;  /* Centers the content */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header-left {
+    text-align: left;
+}
+
+.header h1 {
+    margin: 10px;
+    font-size: 36px;
+    color: #ffffff;
+}
+
+.header h2 {
+    margin: 5px 0 20px;
+    font-size: 24px;
+    color: #ffffff;
+    font-weight: lighter;
+}
+
+.header-right {
+    text-align: right;
+}
+
+.header-right table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.header-right table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.header nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.header nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.header nav ul li a {
+    text-decoration: none; /* Removes the underline */
+    color: #ffffff; /* Sets the link text color to white */
+    font-size: 18px; /* Sets the font size */
+    font-weight: bold; /* Makes the link text bold */
+}
+
+/* Optional: Hover effect */
+.header nav ul li a:hover {
+    color: #D4AF37; /* Changes the text color on hover */
+}
+
+.header-link{
+    text-decoration: none; /* Removes the underline */
+    color: #D4AF37; /* Sets the link text color to white */
+}
+
+.header-link:hover {
+    color: #ffffff; /* Changes the text color on hover */
+    opacity: 1;
+}

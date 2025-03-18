@@ -1,0 +1,149 @@
+.skills-section {
+    padding: 6rem 2rem;
+    background-color: #f8f9fa;
+    position: relative;
+  }
+  
+  .skills-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .highlight {
+    color: #0d6efd;
+    position: relative;
+  }
+  
+  .highlight::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #0d6efd;
+    transform: scaleX(0.7);
+    transform-origin: left;
+  }
+  
+  .skills-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .skills-content.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .skills-category {
+    margin-bottom: 3rem;
+  }
+  
+  .skills-category:last-child {
+    margin-bottom: 0;
+  }
+  
+  .category-title {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    color: #333;
+  }
+  
+  .category-icon {
+    margin-right: 0.75rem;
+    font-size: 1.5rem;
+  }
+  
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .skill-item {
+    margin-bottom: 1rem;
+  }
+  
+  .skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+  
+  .skill-name {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #444;
+    margin: 0;
+  }
+  
+  .skill-percentage {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #555;
+  }
+  
+  .skill-bar {
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .skill-progress {
+    height: 100%;
+    background: linear-gradient(90deg, #0d6efd, #0099ff);
+    border-radius: 5px;
+    width: 0;
+    transition: width 1s ease;
+  }
+  
+  .skill-progress.soft-skill {
+    background: linear-gradient(90deg, #6610f2, #8540f5);
+  }
+  
+  /* Animations for skill bars */
+  @keyframes progressAnimation {
+    0% {
+      width: 0;
+    }
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+    }
+    
+    .category-title {
+      font-size: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .skills-section {
+      padding: 4rem 1rem;
+    }
+    
+    .skill-info {
+      flex-direction: column;
+    }
+    
+    .skill-percentage {
+      margin-bottom: 0.25rem;
+    }
+  }
